@@ -1,0 +1,19 @@
+package Puzzle;
+
+public class node {
+	
+	public node parent;
+	public int[][] matriz;
+	public int x, y;
+	public int cost;
+	public int level;
+	public int[][] length;
+	
+
+	public node(int[][] inicial, int x, int y, int x2, int y2, int i, node parent) {
+		this.parent = parent;
+		//this.matriz = new int[matriz.length][];
+		
+	}
+
+}

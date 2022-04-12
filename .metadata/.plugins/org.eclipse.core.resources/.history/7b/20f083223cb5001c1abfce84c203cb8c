@@ -1,0 +1,9 @@
+package Puzzle;
+
+public class node {
+
+	public node(int[][] inicial, int x, int y, int x2, int y2, int i, Object object) {
+		// TODO Auto-generated constructor stub
+	}
+
+}

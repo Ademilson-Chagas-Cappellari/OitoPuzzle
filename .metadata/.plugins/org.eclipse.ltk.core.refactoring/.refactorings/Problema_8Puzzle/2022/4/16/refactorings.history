@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;Puzzle.node&apos; to &apos;auxi&apos;&#x0D;&#x0A;- Original project: &apos;Problema_8Puzzle&apos;&#x0D;&#x0A;- Original element: &apos;Puzzle.node&apos;&#x0D;&#x0A;- Renamed element: &apos;Puzzle.auxi&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;node&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;Puzzle{node.java[node" matchStrategy="1" name="auxi" qualified="false" references="true" similarDeclarations="false" stamp="1649685384079" textual="false" version="1.0"/>
+</session>

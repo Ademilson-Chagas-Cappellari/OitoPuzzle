@@ -1,0 +1,138 @@
+package Puzzle;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.PriorityQueue;
+
+import org.w3c.dom.Node;
+
+/*A Nodeinterface é o tipo de dados primário. Ele representa um único nó na árvore do documento.
+ * Embora todos os objetos que implementam a Nodeinterface exponham métodos para lidar com filhos,
+ * nem todos os objetos que implementam a Nodeinterface podem ter filhos.*/
+
+
+public class Principal {
+	
+	public int dimensao = 3;
+	
+	//Inferior, esquerda, superior, direita.
+	int[] linha = {1, 0, -1, 0};
+	int[] coluna = {0, -1, 0, 1};
+	
+	public int calculador(int[][] inicial, int[][] meta) {
+		int cont = 0;
+		int x = inicial.length;
+		for(int i =0; i < x; i++) {
+			for(int j = 0; j < x; j++) {
+				if(inicial[i][j] != 0 && inicial[i][j] != meta[i][j]) {
+					cont++;
+				}
+			}
+		}
+		return cont;
+	}
+	
+	//Imprimir a matriz
+	@SuppressWarnings("null")
+	public void Matriz(int[][] matriz) {
+		for(int i = 0; i < matriz.length; i++) {
+			for(int j = 0; j < matriz.length; j++) {
+				String[][] Matriz = null;
+				System.out.print(Matriz[i][j] + " ");
+			}
+			System.out.println();
+		}
+	}
+
+	public boolean isSafe(int x, int y) {
+		return (x >= 0 && x < dimensao && y >= 0 && y < dimensao);
+	}
+	
+	public void impriCaminho(int[][] root) {
+		if(root == null) {
+			return;
+		}
+		impriCaminho(root);
+		Matriz(root);
+		System.out.println();
+	}
+	
+	//É solucionável 
+	public boolean soluci(int[][] matriz) {
+		List<Integer> array = new ArrayList<Integer>();
+		for(int i = 0; i < matriz.length; i++) {
+			for(int j =0; j <matriz.length; j++) {
+				array.add(matriz[i][j]);
+			}
+		}
+		
+		// Criando outro Array
+		Integer[] outroArray = new Integer[array.size()];
+		array.toArray(outroArray);
+		
+		int conta = 0;
+		
+		for(int i = 0; i < outroArray.length - 1; i++) {
+			for(int j = 0; j < outroArray.length; j++) {
+				if(outroArray[i] != 0 && outroArray[j] != 0 && outroArray[i] > outroArray[j]) {
+					conta++;
+				}
+			}
+		}
+		return conta % 2 == 0;
+	}
+	
+	//Resolver o problema
+	public void resolve(int[][] inicial, int[][] meta, int x, int y) {
+		
+		PriorityQueue<node> pq = new PriorityQueue<node>(1000, (a, b) -> (a.cost + a.level) - (b.cost + b.level));
+		node root = new node(inicial, x, y, x, y, 0, null);
+		root.cost = calculador(inicial, meta);
+		pq.add(root);
+		
+		while(!pq.isEmpty()) {
+			Node min = pq.poll();
+			if(min.cost == 0) {
+				printPath(min);
+				return;
+			}
+			
+			for(int i = 0; i < 4; i++) {
+				if(isSafe(min.x + linha[i], min.y + coluna[i])) {
+					node child = new node(min.matriz, min.x, min.y, min.x + linha[i], min.y + coluna[i], min.level + 1, min);
+					child.cost = calculador(child.matriz, meta);
+					pq.add((node) child);
+				}
+			}
+			
+		}
+	}
+
+	private void printPath(Node min) {
+	}
+
+	// Passando uma matriz inicial a ser resolvido e a meta a ser alcançada  
+	public static void main(String args[]) {
+		int[][] inicial = { {1, 8, 2}, {0, 4, 3}, {7, 6, 5} };
+		int[][] meta    = { {1, 2, 3}, {4, 5, 6}, {7, 8, 0} };
+		
+		//Teste se é possivel de ser resolvido
+		int x = 1, y = 0;
+		Principal principal = new Principal();
+		if (principal.soluci(inicial)) {
+			principal.resolve(inicial, meta, x, y);
+		} 
+		else {
+			System.out.println("A matriz inicial não pode ser resolvida");
+		}
+	}
+		
+	
+}
+
+
+
+
+
+
+

@@ -1,0 +1,13 @@
+package Puzzle;
+
+import org.w3c.dom.Node;
+
+public class node implements Node {
+
+	public int cost;
+
+	public node(int[][] inicial, int x, int y, int x2, int y2, int i, Object object) {
+		
+	}
+
+}

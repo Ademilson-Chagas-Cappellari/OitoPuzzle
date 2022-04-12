@@ -1,0 +1,4 @@
+INDEX VERSION 1.131+C:\Projetos\IA\8_Puzzle\.metadata\.plugins\org.eclipse.jdt.core
+1865797976.index
+605938231.index
+1671692264.index

@@ -1,0 +1,7 @@
+package Puzzle;
+
+public class ABC {
+
+	public String matriz;
+
+}

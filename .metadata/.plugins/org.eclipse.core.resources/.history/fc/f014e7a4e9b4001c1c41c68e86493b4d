@@ -1,0 +1,7 @@
+package Puzzle;
+
+public class res {
+
+	public static String matriz;
+
+}

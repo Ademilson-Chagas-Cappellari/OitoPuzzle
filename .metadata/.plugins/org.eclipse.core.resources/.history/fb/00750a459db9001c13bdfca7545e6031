@@ -1,0 +1,33 @@
+package Puzzle;
+
+public class node {
+	
+	public node parent;
+	public int[][] matriz;
+	public int x, y;
+	public int cost;
+	public int level;
+	
+	
+
+	public node(int[][] matriz, int x, int y, int x2, int y2, node parent, int level) {
+		this.parent = parent;
+		this.matriz = new int[matriz.length][];
+		for (int i = 0; i < matriz.length; i++) {
+			this.matriz[i] = matriz[i].clone();
+		}
+		
+		// Troca
+			this.matriz[x][y]       = this.matriz[x][y] + this.matriz[x2][y2];
+			this.matriz[x2][y2] = this.matriz[x][y] - this.matriz[x2][y2];
+			this.matriz[x][y]       = this.matriz[x][y] - this.matriz[x2][y2];
+				
+			this.cost = Integer.MAX_VALUE;
+			this.level = level;
+			this.x = newX;
+			this.y = newY;
+			
+		
+	}
+
+}
